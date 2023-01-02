@@ -7,8 +7,7 @@
     -->
 <html lang="en">
     <head>
-         <link rel="stylesheet" href="style.css">
-         
+         <link rel="stylesheet" href="style.css"> 
     </head>
     <body class="sign">
         <div class="nav_bar">
@@ -22,14 +21,21 @@
             <span ><a href="cart.html"><img src="IMG/logocart.png" id="logo1"></a></span>
         </div>
         <div id="signbox1">
-            <p>You can join us just follow the below steps and fill in the information!</p>
-            <form action="regestration1.php" method="get">
-                <input type="text" name="email" size="size" maxlength="length"  placeholder=" Enter your email" class="boxstyle"><br>
-                <input type="text" name="username" size="size" maxlength="length"  placeholder="User name" class="boxstyle"><br>
-                <input type="password" name="pass1" size="size" maxlength="length"  placeholder="Password" class="boxstyle"><br>
-                <input type="password" name="pass2" size="size" maxlength="length"  placeholder="verify your password" class="boxstyle"><br>
-                <input type="submit" value="sign up" id="Signup1">
-            </form>
+        <?php
+          $email = $_GET['email'];
+          $Name = $_GET['username'];
+          $pass1=$_GET['pass1'];
+          $pass2=$_GET['pass2'];
+          if($pass1 != $pass2)
+          {
+            echo "The passwords are not the same plz try again!,we will be happy if you join to us. "
+          ." ".$Name. ".";
+          } else {
+            echo "Welcom to our family! we hope you enjoyed the experment, "
+            ." ".$Name. ".";
+          }
+          
+        ?>
         </div>
         <footer>
             <div >
