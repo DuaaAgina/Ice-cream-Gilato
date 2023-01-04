@@ -13,16 +13,16 @@
     <body class="login">
         <div class="nav_bar">
             <span id="logo"><a href="ourstory.html" id="logoc">Gilato</a></span>
-            <span><a href="homepage.html" >home</a></span>
-            <span><a href="prices.html" >Prices</a></span>
-            <span><a href="contact.html" >Contact us</a></span>
+            <span>home</span>
+            <span>Prices</span>
+            <span>Contact us</span>
             <span><a href="aboutus.html" >About us</a></span>
             <span><a href="signin.html" >Signup</a></span>
-            <span><a href="login.html" id="contact">Login</a></span>
-            <span ><a href="cart.html"><img src="IMG/logocart.png" id="logo1"></a></span>
+            <span><a href="wrong-loging.php" id="contact">Login</a></span>
+            <span ><img src="IMG/logocart.png" id="logo1"></span>
         </div>
         <div id="signbox2">
-            <p>Welcome </p><br>
+            <p>You have entered a wrong password plz try again </p><br>
             <form action="loging.php" method="post">
                 <input type="text" name="name" size="size" maxlength="length"  placeholder="Enter your email" class="boxstyle"><br>
                 <input type="password" name="pass" size="size" maxlength="length"  placeholder="Password" class="boxstyle"><br>
