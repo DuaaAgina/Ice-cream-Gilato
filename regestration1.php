@@ -12,7 +12,7 @@
     <body class="sign">
         <div class="nav_bar">
             <span id="logo"><a href="ourstory.html" id="logoc">Gilato</a></span>
-            <span><a href="homepage.html" >home</a></span>
+            <span><a href="homepage.php" >home</a></span>
             <span><a href="prices.html" >Prices</a></span>
             <span><a href="contact.html" >Contact us</a></span>
             <span><a href="aboutus.html" >About us</a></span>

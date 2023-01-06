@@ -13,13 +13,13 @@
     <body class="login">
         <div class="nav_bar">
             <span id="logo"><a href="ourstory.html" id="logoc">Gilato</a></span>
-            <span>home</span>
-            <span>Prices</span>
-            <span>Contact us</span>
+            <span><a href="homepage.php" >home</a></span>
+            <span><a href="prices.html" >Prices</a></span>
+            <span><a href="contact.html" >Contact us</a></span>
             <span><a href="aboutus.html" >About us</a></span>
             <span><a href="signin.html" >Signup</a></span>
             <span><a href="wrong-loging.php" id="contact">Login</a></span>
-            <span ><img src="IMG/logocart.png" id="logo1"></span>
+            <span ><a href="cart.php"><img src="IMG/logocart.png" id="logo1"></a></span>
         </div>
         <div id="signbox2">
             <p>You have entered a wrong password plz try again </p><br>

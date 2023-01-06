@@ -62,7 +62,7 @@ body{
   z-index: 100000;
 }
  span{
-    margin-left: 50px;
+    margin-left: 30px;
     margin-top: 30px;
     font-size: large;
     font-family: cursive;
@@ -118,7 +118,7 @@ a:visited{
     border: 1px solid rgb(250, 206, 112);
     background-color: rgb(96, 138, 100);
     opacity: 0.9;
-    margin-top: 14%;
+    margin-top: 10%;
     margin-right: 60%;
     margin-left: 1%;
     font-size: larger;
@@ -401,4 +401,8 @@ color: #800101;
   width: 80%;
   margin-top: 15%;
   margin-left: 9%;
+}
+#name{
+  margin-left: 40%;
+  justify-content: center;
 }

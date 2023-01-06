@@ -1,15 +1,17 @@
 <?php
-if(!isset($_POST['name']) or !isset($_POST['pass']) ){
-   echo " <H1> You Need to Submit the Form!! <H1>";
-   exit;
-}   
+// Start the session
+session_start();
    $name = $_POST['name'];
    $pass = $_POST['pass'];
-  if (($name=="sa" && $pass=="sa")||($name=="name1" && $pass=="name1")||($name=="name2" && $pass=="name2")) {
-    header("Location: homepage.html");
+    // Set session variables
+    $_SESSION['name'] = $name;
+    $_SESSION['pass'] = $pass;
+    echo "Session variables are set.";
+  if (($name=="sa" && $pass=="sa")||($name=="user1" && $pass=="user1")||($name=="user2" && $pass=="user2")) {
+    header("Location: homepage.php");
         
     
 } else {
     header("Location: wrong-loging.php");
-  }
+  } 
 ?>
