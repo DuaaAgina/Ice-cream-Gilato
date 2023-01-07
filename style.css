@@ -149,7 +149,7 @@ footer{
     padding: 10px;
     box-sizing: border-box;
     display: block;
-    margin-top: 100%;
+    margin-top: 40%;
     text-align: center;
     font-family: sans-serif;
 }
@@ -301,7 +301,7 @@ color: #800101;
   padding-top: 20px;
   padding-bottom: 40px;
   width: 70%;
-  height: 500px;
+  height: 800px;
 }
 #cart1{
   border: 1px solid rgb(252, 200, 202);
@@ -315,7 +315,10 @@ color: #800101;
   padding-top: 20px;
   padding-bottom: 40px;
   width: 70%;
-  height: 500px;
+  height: 650px;
+}
+.order{
+  color: #7a0707;
 }
  .Heading{
   font-size: larger;
