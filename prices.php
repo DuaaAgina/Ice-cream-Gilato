@@ -93,8 +93,10 @@ if(($_SESSION["name"]!='sa'&&$_SESSION["pass"]!='sa')&&($_SESSION["name"]!='user
              <a href="cart2.html"><input type="submit" value="Show my cart" class="cont"></a>
         </div>
     </form>
+        </div>
+        </div>
         <footer>
-            <div >
+            <div id="fo">
                 <p>E: Gilato@gmail.com</p>
                 <p>P: 000000</p>
                 <p><a href="contact.html" >BUSINESS SERVICES</a></p>

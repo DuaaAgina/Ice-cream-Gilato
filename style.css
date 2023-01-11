@@ -226,6 +226,9 @@ footer{
     padding-top: 20px;
     padding-bottom: 40px;
 }
+#fo{
+  width: 100%;
+}
 #signbox1{
   border: 1px solid rgb(250, 206, 112);
   background-color: rgb(255, 241, 216);
@@ -263,7 +266,7 @@ footer{
   width: 500px;
 }
 #logoc{
-color: rgb(138, 58, 58);
+color: rgb(124, 46, 46);
 }
 #pic1our{
  
@@ -301,7 +304,7 @@ color: #800101;
   padding-top: 20px;
   padding-bottom: 40px;
   width: 70%;
-  height: 800px;
+  height: 900px;
 }
 #cart1{
   border: 1px solid rgb(252, 200, 202);
