@@ -1,7 +1,7 @@
 <?php
 // Start the session
 session_start();
-if(($_SESSION["name"]!='sa'&&$_SESSION["pass"]!='sa')&&($_SESSION["name"]!='user2'&&$_SESSION["pass"]!='user2')&&($_SESSION["name"]!='user1'&&$_SESSION["pass"]!='user1'))
+if(($_SESSION["name"]!='sa'||  $_SESSION["pass"]!='sa')&&($_SESSION["name"]!='user2'|| $_SESSION["pass"]!='user2')&&($_SESSION["name"]!='user1'|| $_SESSION["pass"]!='user1'))
 {
     header("Location: login.html");
 }

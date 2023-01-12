@@ -1,7 +1,7 @@
 <?php
 // Start the session
 session_start();
-if(($_SESSION["name"]!='sa'&&$_SESSION["pass"]!='sa')&&($_SESSION["name"]!='user2'&&$_SESSION["pass"]!='user2')&&($_SESSION["name"]!='user1'&&$_SESSION["pass"]!='user1'))
+if(($_SESSION["name"]!='sa'||  $_SESSION["pass"]!='sa')&&($_SESSION["name"]!='user2'|| $_SESSION["pass"]!='user2')&&($_SESSION["name"]!='user1'|| $_SESSION["pass"]!='user1'))
 {
     header("Location: login.html");
 }
@@ -69,7 +69,7 @@ echo $_SESSION['name'];
   
                    <h3 class="order">Your order will arrive soon <?php
              echo $_SESSION['name'];
-            ?> call us if there is any truble</h3>
+            ?> call us if there is any trouble</h3>
                 </form>
             </div> 
              
