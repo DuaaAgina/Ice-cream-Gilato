@@ -23,19 +23,23 @@ body{
   background-size: 100% 100%;
 }
 .mainpage {
-  background-image: url(IMG/backgroundmain8.png);
-  background-attachment: scroll;
+ /* background-image: url(IMG/backgroundmain8.png);
+  background-attachment: scroll;*/
+  background-color: #f5f5f5;
 }
 .aboutus{
-  background-image: url(IMG/backgroundmain3.png);
-}
+ /* background-image: url(IMG/backgroundmain8.png);  */
+ background-color: #f5f5f5;
+}}
 .contact{
-  background-image: url(IMG/backgroundmain9.jpg);
-  
+  /*background-image: url(IMG/backgroundmain8.png); */
+  background-color: #9bbb94;
+}  
 }
 .sign{
-  background-image: url(IMG/backgroundmain6.jpg);
-  
+ /* background-image: url(IMG/backgroundmain8.png); */
+ background-color: #f5f5f5;
+} 
 }
 .cart{
  background-color: #cbecff;
@@ -45,7 +49,7 @@ body{
   background-color: #fffec8;
 }
 .login{
-  background-image: url(IMG/backgroundmain7.png);
+ /* background-image: url(IMG/backgroundmain8.png);*/
 }
 .ourstory{
   background-color: rgb(199, 164, 164);
@@ -119,8 +123,8 @@ a:visited{
     background-color: rgb(96, 138, 100);
     opacity: 0.9;
     margin-top: 10%;
-    margin-right: 60%;
-    margin-left: 1%;
+    margin-right: 30%;
+    margin-left: 30%;
     font-size: larger;
     font-family: cursive;
     border-radius: 10px;
@@ -230,10 +234,10 @@ footer{
   width: 100%;
 }
 #signbox1{
-  border: 1px solid rgb(250, 206, 112);
-  background-color: rgb(255, 241, 216);
-  margin-top: 14%;
-  margin-right: 50%;
+  border: 1px solid rgb(138, 61, 71);
+  background-color: rgb(177, 93, 93);
+  margin-top: 8%;
+  margin-right: 30%;
   margin-left: 30%;
   font-size: larger;
   font-family: cursive;
@@ -411,4 +415,19 @@ color: #800101;
 #name{
   margin-left: 40%;
   justify-content: center;
+}
+#boxedit{
+  border: 1px solid rgb(252, 200, 202);
+  background-color: #ffe0e2;
+  margin-top: 14%;
+  opacity: 0.85;
+  margin-right: 60%;
+  margin-left: 30%;
+  font-size: larger;
+  font-family: cursive;
+  border-radius: 20px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  width: 500px;
 }

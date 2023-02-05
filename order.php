@@ -1,8 +1,9 @@
 <?php
 // Start the session
 session_start();
-if(($_SESSION["name"]!='sa'||  $_SESSION["pass"]!='sa')&&($_SESSION["name"]!='user2'|| $_SESSION["pass"]!='user2')&&($_SESSION["name"]!='user1'|| $_SESSION["pass"]!='user1'))
+if(empty($_SESSION['name']))
 {
+   // echo "hi again";
     header("Location: login.html");
 }
 echo $_SESSION['name'];
@@ -51,7 +52,7 @@ echo $_SESSION['name'];
             <span><a href="prices.php" >Prices</a></span>
             <span><a href="contact.html" >Contact us</a></span>
             <span><a href="aboutus.html" >About us</a></span>
-            <span><a href="signin.html" >Signup</a></span>
+            <span><a href="signin.php" >Signup</a></span>
             <span><a href="login.html" >Login</a></span>
             <span><a href="logout.php" >Logout</a></span>
             <span ><a href="cart.php"><img src="IMG/logocart.png" id="logo1"></a></span>

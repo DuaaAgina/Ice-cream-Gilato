@@ -1,10 +1,13 @@
+<?php
+include_once 'tryconnectDB.php';
+ ?>   
 <!DOCTYPE html>
-<!-- NAME: DUAA ADEL AGINA
+ <!--NAME: DUAA ADEL AGINA
      ID:217010033
      DATE:2022/12/15
      DESCRIPTION: SIGNIN PAGE
-     I TOOK SOME OF THE CODE FROM LICTURES LIKE THE FORM
-    -->
+     I TOOK SOME OF THE CODE FROM LICTURES LIKE THE FORM-->
+    
 <html lang="en">
     <head>
          <link rel="stylesheet" href="style.css"> 
@@ -16,27 +19,35 @@
             <span><a href="prices.php" >Prices</a></span>
             <span><a href="contact.html" >Contact us</a></span>
             <span><a href="aboutus.html" >About us</a></span>
-            <span><a href="signin.html" id="contact">Signup</a></span>
+            <span><a href="signin.php" id="contact">Signup</a></span>
             <span><a href="login.html" >Login</a></span>
             <span><a href="logout.php" >Logout</a></span>
             <span ><a href="cart.html"><img src="IMG/logocart.png" id="logo1"></a></span>
         </div>
         <div id="signbox1">
         <?php
-          $email = $_GET['email'];
-          $Name = $_GET['username'];
-          $pass1=$_GET['pass1'];
-          $pass2=$_GET['pass2'];
-          if($pass1 != $pass2)
-          {
-            echo "The passwords are not the same plz try again!,we will be happy if you join to us. "
-          ." ".$Name. ".";
+
+$email = $_GET['email'];
+$fname = $_GET['fname'];
+$lname = $_GET['lname'];
+$phone = $_GET['phone'];
+$address = $_GET['address'];
+$pass1 = $_GET['pass1'];
+$pass2 = $_GET['pass2'];
+        if ($pass1 == $pass2) {
+          $sql = "INSERT INTO user (password,fname,lname,email,address,phone)
+          VALUES ('$pass1','$fname','$lname','$email','$address','$phone')";
+          if (mysqli_query($conn, $sql)) {
+            echo "Welcome to the the family !";
           } else {
-            echo "Welcom to our family! we hope you enjoyed the experment, "
-            ." ".$Name. ".";
+            echo "Error: " . $sql . ":-" . mysqli_error($conn);
           }
-          
-        ?>
+          mysqli_close($conn);
+        }
+        else{
+          echo "Try again pleas the passwords are not the same";
+        }
+?>
         </div>
         <footer>
             <div >
@@ -49,8 +60,5 @@
             </div>
         </footer>
     </body>
-    
-        
-    
 
 </html>

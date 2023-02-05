@@ -1,8 +1,9 @@
 <?php
 // Start the session
 session_start();
-if(($_SESSION["name"]!='sa'||  $_SESSION["pass"]!='sa')&&($_SESSION["name"]!='user2'|| $_SESSION["pass"]!='user2')&&($_SESSION["name"]!='user1'|| $_SESSION["pass"]!='user1'))
+if(empty($_SESSION['name']))
 {
+   // echo "hi again";
     header("Location: login.html");
 }
 ?>
@@ -34,16 +35,13 @@ if(($_SESSION["name"]!='sa'||  $_SESSION["pass"]!='sa')&&($_SESSION["name"]!='us
             <span><a href="signin.html" >Signup</a></span>
             <span><a href="login.html" >Login</a></span>
             <span><a href="logout.php" >Logout</a></span>
+            <span><a href="editpage.php" ><?php echo $_SESSION['fname'];?></a></span>
             <span ><a href="cart.php"><img src="IMG/logocart.png" id="logo1"></a></span>
-            
         </div>
        
 
         <div id="box">
-            <p class="transbox"><a href="prices.html" > Welcome to our online shop!<br>
-            <?php
-             echo $_SESSION['name'];
-            ?>
+            <p class="transbox"><a href="prices.php" > Welcome to our online shop!<br>
                 click her to buy online
             </a></p>
            
@@ -59,8 +57,4 @@ if(($_SESSION["name"]!='sa'||  $_SESSION["pass"]!='sa')&&($_SESSION["name"]!='us
             </div>
         </footer>
     </body>
-    
-        
-    
-
 </html>

@@ -1,36 +1,50 @@
+<?php
+include 'tryconnectDB.php.';
+session_start();
+?>
 <!DOCTYPE html>
 <!-- NAME: DUAA ADEL AGINA
      ID:217010033
      DATE:2022/12/15
-     DESCRIPTION: SIGNIN PAGE
-     I TOOK SOME OF THE CODE FROM LICTURES LIKE THE FORM
+     DESCRIPTION: HOME PAGE
     -->
 <html lang="en">
     <head>
          <link rel="stylesheet" href="style.css">
          
     </head>
-    <body class="sign">
+    
+    <body class="mainpage">
+        <p id="name">
+        <?php
+             echo $_SESSION['name'];
+            ?>
+        </p>
         <div class="nav_bar">
+ 
             <span id="logo"><a href="ourstory.html" id="logoc">Gilato</a></span>
             <span><a href="homepage.php" >home</a></span>
             <span><a href="prices.php" >Prices</a></span>
             <span><a href="contact.html" >Contact us</a></span>
             <span><a href="aboutus.html" >About us</a></span>
-            <span><a href="signin.html" id="contact">Signup</a></span>
+            <span><a href="signin.php" >Signup</a></span>
             <span><a href="login.html" >Login</a></span>
             <span><a href="logout.php" >Logout</a></span>
+            <span ><a href="editpage.php" id="contact"><?php echo $_SESSION['fname'];?></a></span>
             <span ><a href="cart.php"><img src="IMG/logocart.png" id="logo1"></a></span>
         </div>
-        <div id="signbox1">
-            <p>You can join us just follow the below steps and fill in the information!</p>
-            <form action="regestration1.php" method="get">
-                <input type="text" name="email" size="size" maxlength="length"  placeholder=" Enter your email" class="boxstyle"><br>
-                <input type="text" name="username" size="size" maxlength="length"  placeholder="User name" class="boxstyle"><br>
-                <input type="password" name="pass1" size="size" maxlength="length"  placeholder="Password" class="boxstyle"><br>
-                <input type="password" name="pass2" size="size" maxlength="length"  placeholder="verify your password" class="boxstyle"><br>
-                <input type="submit" value="sign up" id="Signup1">
-            </form>
+
+
+        <div id="boxedit">
+        <?php
+
+if(count($_GET)>1)
+{
+ mysqli_query($conn,"UPDATE user  SET fname='" . $_GET['fname']."',lname='" . $_GET['lname']."',password='" . $_GET['pass1']."',address='" . $_GET['address']."',phone='" . $_GET['phone']."',email='" . $_GET['email']."' WHERE email='" . $_SESSION['name']."'" );
+ echo "<p>Complete editing </p>";
+}
+?>
+           
         </div>
         <footer>
             <div >
@@ -43,8 +57,4 @@
             </div>
         </footer>
     </body>
-    
-        
-    
-
 </html>
