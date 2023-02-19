@@ -31,15 +31,23 @@ if(empty($_SESSION['name']))
             <span><a href="login.html" >Login</a></span>
             <span><a href="logout.php" >Logout</a></span>
             <span><a href="editpage.php" ><?php echo $_SESSION['fname'];?></a></span>
-            <span ><a href="cart.php"><img src="IMG/logocart.png" id="logo1"></a></span>
+            <span ><a href="cart1.php"><img src="IMG/logocart.png" id="logo1"></a></span>
         </div>
         <div id="cart">
+        <div class="dropdown">
+            <button>Category</button>
+            <div class="dropdown-content">
+            <a href="tubes.php">Tubs</a>
+            <a href="cones.php">Cones</a>
+            <a href="bars.php">Bars</a>
+            </div>
+        </div>
         <div>
                 <p class="Heading">Welcome <?php
-            // echo $_SESSION['name'];
+           
             ?></p>
         
-        <form action="cart.php" method="post" >
+        <form action="cart1.php" method="post" >
             
         <div class="line">  </div>
         <div >
@@ -52,21 +60,21 @@ if(empty($_SESSION['name']))
                 </tr>
                 <tr>    
                     <td><img src="IMG/pro1.png" class="picart1"></td>
-                    <td>Chocolate</td>
+                    <td>Coffe</td>
                    <td>2LYD</td>
                    <td><input type="text" name="pro1" size="3" maxlength="3" />
                    </td>
                   </tr>
                   <tr>    
                       <td><img src="IMG/pro2.png" class="picart1"></td>
-                      <td>Coffe</td>
+                      <td>Vanilla</td>
                      <td>4LYD</td>
                      <td><input type="text" name="pro2" size="3" maxlength="3" />
                      </td>
                     </tr>
                     <tr>    
                         <td><img src="IMG/cones3.png" class="picart1"></td>
-                        <td>Vanilla </td>
+                        <td>Cherry </td>
                        <td>6LYDL</td>
                        <td><input type="text" name="pro3" size="3" maxlength="3" />
                        </td>
@@ -80,14 +88,14 @@ if(empty($_SESSION['name']))
                       </tr>
                       <tr>    
                         <td><img src="IMG/bar2.png" class="picart1"></td>
-                        <td>Cherry</td>
+                        <td>Chocolate</td>
                        <td>5LYD</td>
                        <td><input type="text" name="pro5" size="3" maxlength="3" />
                        </td>
                       </tr>
                       <tr>    
                         <td><img src="IMG/bar4.png" class="picart1"></td>
-                        <td>Pistachio</td>
+                        <td>Banana</td>
                        <td>7LYD</td>
                        <td><input type="text" name="pro6" size="3" maxlength="3" />
                        </td>
