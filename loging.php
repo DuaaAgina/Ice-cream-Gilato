@@ -2,7 +2,7 @@
 // Start the session
 session_start();
 include 'tryconnectDB.php';
-    if(isset($_POST['name']) && isset($_POST['name']))
+    if(isset($_POST['name']) && isset($_POST['pass']))
     {
       function validate($data)
       {
@@ -40,6 +40,7 @@ include 'tryconnectDB.php';
         $_SESSION['phone'] = $row['phone'];
         $_SESSION['address'] = $row['address'];
         $_SESSION['lname'] = $row['lname'];
+        $_SESSION['check'] = $row['checkme'];
         header("Location: homepage.php");
       }
       else{

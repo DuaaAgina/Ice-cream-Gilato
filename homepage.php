@@ -29,9 +29,10 @@ if(empty($_SESSION['name']))
  
             <span id="logo"><a href="ourstory.html" id="logoc">Gilato</a></span>
             <span><a href="homepage.php" id="contact">home</a></span>
+            <span><a href="control.php" ><?php if($_SESSION['check']==1){echo "Control";} ?></a></span>   
             <span><a href="prices.php" >Prices</a></span>
-            <span><a href="contact.html" >Contact us</a></span>
-            <span><a href="aboutus.html" >About us</a></span>
+            <span><a href="contact.html" >Contact </a></span>
+            <span><a href="aboutus.html" >us</a></span>
             <span><a href="signin.html" >Signup</a></span>
             <span><a href="login.html" >Login</a></span>
             <span><a href="logout.php" >Logout</a></span>
