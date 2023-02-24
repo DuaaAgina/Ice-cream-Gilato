@@ -23,6 +23,7 @@ if(empty($_SESSION['name']))
         <p id="name">
         <?php
              echo $_SESSION['name'];
+             
             ?>
         </p>
         <div class="nav_bar">

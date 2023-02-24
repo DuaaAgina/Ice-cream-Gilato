@@ -6,6 +6,7 @@ if(empty($_SESSION['name']))
    // echo "hi again";
     header("Location: login.html");
 }
+include_once 'tryconnectDB.php';
 ?>
 <!DOCTYPE html>
 <!-- NAME: DUAA ADEL AGINA
@@ -41,11 +42,18 @@ if(empty($_SESSION['name']))
         </div>
        
 
-        <div id="control">
-        <span ><a href="veiw.php" >View Users</a></span>
-            <span ><a href="add.php" >Add Items </a></span>
-            <span ><a href="delete.php" >Delete items</a></span>
-            <span ><a href="update.html" >Update items</a></span>  
+        <div id="signboxx">
+           
+            <form action="addtodatabase.php" method="get">
+               Name:<?php echo"&nbsp&nbsp"; ?> <input type="text" name="itemname" size="size" maxlength="length"  placeholder=" Enter item name" class="boxstyle" required='required'><br><br>
+                flavor:<?php echo"&nbsp&nbsp"; ?> <input type="text" name="flav" size="size" maxlength="length"  placeholder=" Enter item flavor" class="boxstyle" required='required'><br><br>
+                Price:<?php echo"&nbsp&nbsp&nbsp&nbsp"; ?><input type="text" name="price" size="size" maxlength="length"  placeholder=" Enter the price" class="boxstyle" required='required'><br><br>
+                Quantity<input type="text" name="quant" size="size" maxlength="length"  placeholder="Enter quatity" class="boxstyle" required='required'><br><br>
+                category:<input type="text" name="category" size="size" maxlength="length"  placeholder=" Enter category" class="boxstyle" required='required'><br><br>
+                <input type="submit" value="Add Item" id="Signup1">
+                <br>
+                
+            </form>
         </div>
         <footer>
             <div >

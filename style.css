@@ -57,7 +57,7 @@ body{
  .nav_bar{
   display:flex;
   justify-content: center;
-  background-color: rgb(187, 132, 132);;
+  background-color: rgb(187, 132, 132);
   /*to make the nav bar at the top of the page*/
   position: fixed;
   width: 100%;
@@ -65,8 +65,18 @@ body{
   left: 0;
   z-index: 100000;
 }
+#control{
+ 
+  margin-left: 430px;
+    margin-top: 200px;
+    font-size: large;
+    font-family: cursive;
+    display:flex;/*side by side*/  
+    
+}
+
  span{
-    margin-left: 30px;
+    margin-left: 26px;
     margin-top: 30px;
     font-size: large;
     font-family: cursive;
@@ -236,6 +246,19 @@ footer{
 #signbox1{
   border: 1px solid rgb(138, 61, 71);
   background-color: rgb(177, 93, 93);
+  margin-top: 8%;
+  margin-right: 30%;
+  margin-left: 30%;
+  font-size: larger;
+  font-family: cursive;
+  border-radius: 20px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+#signboxx{
+  
+  
   margin-top: 8%;
   margin-right: 30%;
   margin-left: 30%;

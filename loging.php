@@ -41,6 +41,14 @@ include 'tryconnectDB.php';
         $_SESSION['address'] = $row['address'];
         $_SESSION['lname'] = $row['lname'];
         $_SESSION['check'] = $row['checkme'];
+        
+        
+        /*  $sqll = "SELECT * FROM 'admin' WHERE adminname='$row[fname]' ";
+          $resultt = mysqli_query($conn,$sqll);
+          $roww = mysqli_fetch_assoc($resultt);
+          $_SESSION['admincode'] = $roww['admincode'];
+          echo "$_SESSION[admincode]";*/
+        
         header("Location: homepage.php");
       }
       else{
