@@ -42,7 +42,7 @@ if(empty($_SESSION['name']))
        
 
         <div id="control">
-        <span ><a href="veiw.php" >View Users</a></span>
+        <span ><a href="veiw.php" >View all Users</a></span>
             <span ><a href="add.php" >Add Items </a></span>
             <span ><a href="delete.php" >Delete items</a></span>
             <span ><a href="update.html" >Update items</a></span>  

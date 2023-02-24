@@ -37,7 +37,7 @@ $categ = $_GET['category'];
 
        
           $sql = "INSERT INTO item (itemname,itemquantt,itemprice,itemcategoery,itemflavor,admincode)
-          VALUES ('$name','$quant','$price','$categ','$flav','$_SESSION[admincode]')";
+          VALUES ('$name','$quant','$price','$categ','$flav','$_SESSION[code]')";
           if (mysqli_query($conn, $sql)) {
             echo "Added succesufuly";
           } else {

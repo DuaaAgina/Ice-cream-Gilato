@@ -6,7 +6,6 @@ if(empty($_SESSION['name']))
    // echo "hi again";
     header("Location: login.html");
 }
-include_once 'tryconnectDB.php';
 ?>
 <!DOCTYPE html>
 <!-- NAME: DUAA ADEL AGINA
@@ -42,25 +41,35 @@ include_once 'tryconnectDB.php';
         </div>
        
 
-        <div id="signboxx">
-           
-            <form action="addtodatabase.php" method="get">
-            category:
-                <select name="category" class="boxstyle"><br>
-                <option value="1">Cones</option>
-                <option value="2">Tubes</option>
-                <option value="3">Bars</option>
-                </select><br><br>
-               Name:<?php echo"&nbsp&nbsp"; ?> <input type="text" name="itemname" size="size" maxlength="length"  placeholder=" Enter item name" class="boxstyle" required='required'><br><br>
-                flavor:<?php echo"&nbsp&nbsp"; ?> <input type="text" name="flav" size="size" maxlength="length"  placeholder=" Enter item flavor" class="boxstyle" required='required'><br><br>
-                Price:<?php echo"&nbsp&nbsp&nbsp&nbsp"; ?><input type="text" name="price" size="size" maxlength="length"  placeholder=" Enter the price" class="boxstyle" required='required'><br><br>
-                Quantity<input type="text" name="quant" size="size" maxlength="length"  placeholder="Enter quatity" class="boxstyle" required='required'><br><br>
-                
-                <!--<input type="text" name="category" size="size" maxlength="length"  placeholder=" Enter category" class="boxstyle" required='required'><br><br>-->
-                <br><input type="submit" value="Add Item" id="Signup1">
-                <br>
-                
-            </form>
+        <div id="control">
+       <?php
+        $searchtype=$_POST['type'];
+        $searchterm=$_POST['search'];
+        if (empty($searchtype) || empty($searchterm)) {
+            echo '<p>You have not entered any inputs.<br/>
+              go back and try again.</p>'; 
+         }
+         // echo "$searchtype";
+          include 'tryconnectDB.php';
+          $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
+          $query = "SELECT fname, lname, phone, 'address' FROM user WHERE $searchtype Like  '%$searchterm%'  ";
+          $result = $mysqli->query($query);
+          if ($result->num_rows > 0)
+ {
+ // output data of each row
+ $i=1;
+  while($row = $result->fetch_assoc()) {
+    echo "&nbsp;&nbsp;&nbsp;&nbsp;User :".$i."<br>";
+   // echo " Name:" .$row["itemname"]. "<br>";
+    echo "&nbsp;&nbsp;&nbsp;&nbsp; First name:" . $row["fname"]. "<br>";
+    echo "&nbsp;&nbsp;&nbsp;&nbsp; Last name:" . $row["lname"]."<br>";
+    echo "<br>"; 
+    $i++; }
+} else {
+   
+  echo "&nbsp;&nbsp;&nbsp;&nbsp;No users found.";
+}
+       ?> 
         </div>
         <footer>
             <div >
