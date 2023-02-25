@@ -1,11 +1,6 @@
 <?php
-// Start the session
+include 'tryconnectDB.php.';
 session_start();
-if(empty($_SESSION['name']))
-{
-   // echo "hi again";
-    header("Location: login.html");
-}
 ?>
 <!DOCTYPE html>
 <!-- NAME: DUAA ADEL AGINA
@@ -29,23 +24,27 @@ if(empty($_SESSION['name']))
  
             <span id="logo"><a href="ourstory.html" id="logoc">Gilato</a></span>
             <span><a href="homepage.php" >home</a></span>
-            <span><a href="control.php" id="contact"><?php if($_SESSION['check']==1){echo "Control";} ?></a></span>   
             <span><a href="prices.php" >Prices</a></span>
-            <span><a href="contact.html" >Contact </a></span>
-            <span><a href="aboutus.html" >us</a></span>
-            <span><a href="signin.html" >Signup</a></span>
+            <span><a href="contact.html" >Contact us</a></span>
+            <span><a href="aboutus.html" >About us</a></span>
+            <span><a href="signin.php" >Signup</a></span>
             <span><a href="login.html" >Login</a></span>
             <span><a href="logout.php" >Logout</a></span>
-            <span><a href="editpage.php" ><?php echo $_SESSION['fname'];?></a></span>
-            <span ><a href="cart1.php"><img src="IMG/logocart.png" id="logo1"></a></span>
+            <span ><a href="editpage.php" id="contact"><?php echo $_SESSION['fname'];?></a></span>
+            <span ><a href="cart.php"><img src="IMG/logocart.png" id="logo1"></a></span>
         </div>
-       
 
-        <div id="control">
-        <span ><a href="veiw.php" >View all Users</a></span>
-            <span ><a href="add.php" >Add Items </a></span>
-            <span ><a href="delete.php" >Delete & Update items</a></span>
-       
+
+        <div id="boxedit">
+        <?php
+
+if(count($_GET)>1)
+{
+ mysqli_query($conn,"UPDATE item  SET itemname='" . $_GET['name']."',itemflavor='" . $_GET['flav']."',itemquantt='" . $_GET['quant']."',itemprice='" . $_GET['price']."' WHERE Itemcode='" . $_SESSION['delet']."'" );
+ echo "<p>Complete editing </p>";
+}
+?>
+           
         </div>
         <footer>
             <div >

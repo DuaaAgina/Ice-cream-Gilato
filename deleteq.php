@@ -39,47 +39,34 @@ if(empty($_SESSION['name']))
             <span><a href="editpage.php" ><?php echo $_SESSION['fname'];?></a></span>
             <span ><a href="cart1.php"><img src="IMG/logocart.png" id="logo1"></a></span>
         </div>
-       
-
         <div id="control">
        <?php
-        $searchtype=$_POST['type'];
-        $searchterm=$_POST['search'];
-        if (empty($searchtype) || empty($searchterm)) {
-            echo '<p>You have not entered any inputs.<br/>
-              go back and try again.</p>'; 
-         }
-         // echo "$searchtype";
-          include 'tryconnectDB.php';
-          $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
-          $query = "SELECT fname, lname, phone, 'address' FROM user WHERE $searchtype Like  '%$searchterm%'  ";
-          $result = $mysqli->query($query);
-          if ($result->num_rows > 0)
- {
- // output data of each row
- ?>
- <form action="vip.php">
-    <?php
- $i=1;
- 
-  while($row = $result->fetch_assoc()) {
-    
-    echo "&nbsp;&nbsp;&nbsp;&nbsp;User :".$i."<br>";
-   // echo " Name:" .$row["itemname"]. "<br>";
-    echo "&nbsp;&nbsp;&nbsp;&nbsp; First name:" . $row["fname"]. "<br>";
-    echo "&nbsp;&nbsp;&nbsp;&nbsp; Last name:" . $row["lname"]."<br>";
-    echo "<br>"; 
-    ?>
-    <input type="checkbox" name="submit" value="setvip" ></p><br>
-    <?php
-    $i++; }
-} else {
-   
-  echo "&nbsp;&nbsp;&nbsp;&nbsp;No users found.";
-}
-       ?> 
-       <input type="submit" name="submit" value="Search" id="Signup1"></p><br>
- </form>
+        include 'tryconnectDB.php';
+        $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
+              if ($mysqli->connect_error) {
+                echo '<p>Error: Could not connect to database.<br/>
+            Please try again later.<br/></p>';
+                echo $mysqli->error;
+                exit;
+              }
+              $query ="DELETE  from item where Itemcode='$_SESSION[delet]'";
+    $delete =  $conn->query($query);
+    if($delete)
+    {
+        $conn->close();// Close connection
+        header("location:delete.php"); 
+        exit;
+    }
+    else
+    {
+        echo "<p>Unable to execute the query.</p> ";
+        echo $query;
+        die ($conn -> error);
+    }    	
+     
+       ?>
+
+        
         </div>
         <footer>
             <div >
