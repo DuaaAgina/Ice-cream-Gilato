@@ -40,7 +40,7 @@ session_start();
 
 if(count($_GET)>1)
 {
- mysqli_query($conn,"UPDATE item  SET itemname='" . $_GET['name']."',itemflavor='" . $_GET['flav']."',itemquantt='" . $_GET['quant']."',itemprice='" . $_GET['price']."' WHERE Itemcode='" . $_SESSION['delet']."'" );
+ mysqli_query($conn,"UPDATE item  SET itemname='" . $_GET['name']."',itemflavor='" . $_GET['flav']."',itemquantt='" . $_GET['quant']."',itemprice='" . $_GET['price']."' WHERE Itemcode='" . $_GET['isbn']."'" );
  echo "<p>Complete editing </p>";
 }
 ?>

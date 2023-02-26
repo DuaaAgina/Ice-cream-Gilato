@@ -39,7 +39,7 @@ if(empty($_SESSION['name']))
             <span><a href="editpage.php" ><?php echo $_SESSION['fname'];?></a></span>
             <span ><a href="cart1.php"><img src="IMG/logocart.png" id="logo1"></a></span>
         </div>
-        <div id="picmap" >
+        <div id="control" >
         <form action="deleteq.php" method="post" enctype="multipart/form-data" >
 
     <table border="1"   >
@@ -101,9 +101,9 @@ $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
           ?>
             
           <!--<input type="checkbox" name="dodo" value="<?php $y ?>" ></p><br>-->
-          <td><a href="deleteq.php">Delete</a></td>
+          <td><a href="deleteq.php?isbn=<?php echo $data['usercode'];?>">Delete</a></td>
           </td>
-          <td><a href="update.php">Update</a></td>
+          <td><a href="update.php?isbn=<?php echo $data['usercode'];?>">Update</a></td>
         </tr>
         
       <?php

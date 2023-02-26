@@ -74,7 +74,15 @@ body{
     display:flex;/*side by side*/  
     
 }
-
+#control1{
+ 
+  margin-left: 300px;
+    margin-top: 200px;
+    font-size: large;
+    font-family: cursive;
+    display:flex;/*side by side*/  
+    
+}
  span{
     margin-left: 26px;
     margin-top: 30px;

@@ -41,45 +41,93 @@ if(empty($_SESSION['name']))
         </div>
        
 
-        <div id="control">
-       <?php
-        $searchtype=$_POST['type'];
-        $searchterm=$_POST['search'];
-        if (empty($searchtype) || empty($searchterm)) {
-            echo '<p>You have not entered any inputs.<br/>
-              go back and try again.</p>'; 
-         }
-         // echo "$searchtype";
-          include 'tryconnectDB.php';
-          $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
-          $query = "SELECT fname, lname, phone, 'address' FROM user WHERE $searchtype Like  '%$searchterm%'  ";
-          $result = $mysqli->query($query);
-          if ($result->num_rows > 0)
- {
- // output data of each row
- ?>
- <form action="vip.php">
-    <?php
- $i=1;
- 
-  while($row = $result->fetch_assoc()) {
-    
-    echo "&nbsp;&nbsp;&nbsp;&nbsp;User :".$i."<br>";
-   // echo " Name:" .$row["itemname"]. "<br>";
-    echo "&nbsp;&nbsp;&nbsp;&nbsp; First name:" . $row["fname"]. "<br>";
-    echo "&nbsp;&nbsp;&nbsp;&nbsp; Last name:" . $row["lname"]."<br>";
-    echo "<br>"; 
+        <div id="control1">
+       
+        <form action="AddToChart.php" method="post" enctype="multipart/form-data">
+<table border="1"   >
+  <tr>
+    <td>User number</td>
+    <td>User first Name</td>
+    <td>User last Name</td>
+    <td>User phone</td>
+    <td>User gmail </td>
+    <td>User address </td>
+    <td>Delete user </td>
+    <td>Set VIP </td>
+  </tr>
+
+  <?php
+
+include 'tryconnectDB.php';
+$mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
+  if ($mysqli->connect_error) {
+    echo '<p>Error: Could not connect to database.<br/>
+Please try again later.<br/></p>';
+    echo $mysqli->error;
+    exit;
+  }
+  $searchtype=$_POST['type'];
+  $searchterm=$_POST['search'];
+  $query = "SELECT * FROM user WHERE $searchtype Like  '%$searchterm%'  ";
+  //echo $query;
+  
+  $result = $mysqli->query($query);
+  if (!$result) {
+    echo "<p>Unable to execute the query.</p> ";
+    echo $query;
+    die($mysqli->error);
+  }
+  // fetch data from database
+  $i=1;
+  
+
+  while ($d = $result->fetch_array(MYSQLI_ASSOC)) {
     ?>
-    <input type="checkbox" name="submit" value="setvip" ></p><br>
-    <?php
-    $i++; }
-} else {
+    
+    <?php 
+     $_SESSION['vip']=$d['usercode'];
+     echo $_SESSION['vip'];
+      ?>
+    <tr>
+      <td>
+        <?php echo "$i"; $i++;?>
+      </td>
+      <td>
+        <?php echo $d['fname']; ?>
+      </td>
+      <td>
+        <?php echo $d['lname']; ?>
+      </td>
+      <td>
+        <?php echo $d['phone'];
+       ?>
+      </td>
+      <td>
+        <?php echo $d['email'];
+       ?>
+      </td>
+      <td>
+        <?php echo $d['address'];
+       ?>
+      </td>
+    
+      <td><a href="deleteq.php?isbn=<?php echo $d['usercode'];?>">Delete</a></td>
+      <td>
+      <a href="setvip.php?isbn=<?php echo $d['usercode']; ?>">set</a>
+        <!--<input type="checkbox" value='" name="setvip">-->
+      </td>
+     
+    </tr>
    
-  echo "&nbsp;&nbsp;&nbsp;&nbsp;No users found.";
-}
-       ?> 
-       <input type="submit" name="submit" value="Search" id="Signup1"></p><br>
- </form>
+  <?php
+  }
+  ?>
+</table>
+<br>
+<!--<input type="submit" value="Set VIP" id="Signup1">-->
+
+</form>       
+
         </div>
         <footer>
             <div >
