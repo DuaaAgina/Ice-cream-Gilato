@@ -34,6 +34,7 @@ if(empty($_SESSION['name']))
             <span ><a href="cart1.php"><img src="IMG/logocart.png" id="logo1"></a></span>
         </div>
         <div id="cart">
+          <!--
         <div class="dropdown">
             <button>Category</button>
             <div class="dropdown-content">
@@ -46,7 +47,7 @@ if(empty($_SESSION['name']))
                 <p class="Heading">Welcome <?php
            
             ?></p>
-        
+      
         <form action="cart1.php" method="post" >
             
         <div class="line">  </div>
@@ -104,6 +105,75 @@ if(empty($_SESSION['name']))
              <a href="cart2.html"><input type="submit" value="Show my cart" class="cont"></a>
         </div>
     </form>
+-->
+    <form action="cart1.php" method="post" enctype="multipart/form-data">
+<table border="1"   >
+  <tr>
+  <th> </th>
+                  <th>flavour</th> 
+                  <th>Price</th>
+                  <th>Quantity</th>
+  </tr>
+
+  <?php
+
+include 'tryconnectDB.php';
+$mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
+  if ($mysqli->connect_error) {
+    echo '<p>Error: Could not connect to database.<br/>
+Please try again later.<br/></p>';
+    echo $mysqli->error;
+    exit;
+  }
+
+  $query = "SELECT * FROM item  ";
+  //echo $query;
+  
+  $result = $mysqli->query($query);
+  if (!$result) {
+    echo "<p>Unable to execute the query.</p> ";
+    echo $query;
+    die($mysqli->error);
+  }
+  // fetch data from database
+  $i=1;
+  
+
+  while ($d = $result->fetch_array(MYSQLI_ASSOC)) {
+    ?>
+    <form method="post" action="AddToChart.php?do=<?php echo $d['Itemcode'];?>">
+    <tr>
+      <td>
+        <?php echo "$i"; $i++;
+        $_SESSION['ncode']=$d['Itemcode']; ?>
+      </td>
+      <td>
+        <?php echo $d['itemflavor']; ?>
+      </td>
+      <td>
+        <?php echo $d['itemprice'];
+        
+        ?>
+      </td>
+      <td>
+        <?php echo $d['itemname'];
+       ?>
+      </td>
+      <td>
+      <input type="text" name="quantity"  size="2" >
+      <input type="text" name="dodo"  size="2" value="<?php echo $d['Itemcode'];?>" hidden>
+      <input type="submit" value="ADD" id="Signup1" >
+      </td>   
+    </tr>
+    </form>  
+  <?php
+  }
+  ?>
+</table>
+<br>
+
+
+   
         </div>
         </div>
         <footer>

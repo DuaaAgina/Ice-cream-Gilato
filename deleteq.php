@@ -61,7 +61,7 @@ if(empty($_SESSION['name']))
     {
         echo "<p>Unable to execute the query.</p> ";
         echo $query;
-        die ($conn -> error);
+        die ($conn ->error);
     }    	
      
        ?>

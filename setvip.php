@@ -12,4 +12,6 @@ Please try again later.<br/></p>';
   }
   mysqli_query($conn,"UPDATE user  SET vipuser='" . '1'."' WHERE usercode='".$_GET['isbn']."'");
  echo "<p>Complete editing </p>";
+ header("location:veiw.php"); 
+ exit;
 ?>

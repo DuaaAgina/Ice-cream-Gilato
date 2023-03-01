@@ -101,9 +101,9 @@ $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
           ?>
             
           <!--<input type="checkbox" name="dodo" value="<?php $y ?>" ></p><br>-->
-          <td><a href="deleteq.php?isbn=<?php echo $data['usercode'];?>">Delete</a></td>
+          <td><a href="deleteq.php?isbn=<?php echo $data['Itemcode'];?>">Delete</a></td>
           </td>
-          <td><a href="update.php?isbn=<?php echo $data['usercode'];?>">Update</a></td>
+          <td><a href="update.php?isbn=<?php echo $data['Itemcode'];?>">Update</a></td>
         </tr>
         
       <?php

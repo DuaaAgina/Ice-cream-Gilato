@@ -16,8 +16,9 @@ session_start();
     </head>
     <body class="sign">
         <div class="nav_bar">
-            <span id="logo"><a href="ourstory.html" id="logoc">Gilato</a></span>
+            <span id="logo"><a href="ourstory.html" >Gilato</a></span>
             <span><a href="homepage.php" >home</a></span>
+            <span><a href="control.php" id="contact"><?php if($_SESSION['check']==1){echo "Control";} ?></a></span>
             <span><a href="prices.php" >Prices</a></span>
             <span><a href="contact.html" >Contact us</a></span>
             <span><a href="aboutus.html" >About us</a></span>
@@ -35,7 +36,9 @@ $price = $_GET['price'];
 $quant = $_GET['quant'];
 $categ = $_GET['category'];
 
-       
+       try{
+        $sq = new mysqli('localhost', 'duaa', '13579', 'gilato');
+        $sq->begin_transaction();   
           $sql = "INSERT INTO item (itemname,itemquantt,itemprice,itemcategoery,itemflavor,admincode)
           VALUES ('$name','$quant','$price','$categ','$flav','$_SESSION[code]')";
           if (mysqli_query($conn, $sql)) {
@@ -43,7 +46,15 @@ $categ = $_GET['category'];
           } else {
             echo "Error: " . $sql . ":-" . mysqli_error($conn);
           }
+          
+          $sq->commit();
           mysqli_close($conn);
+        }catch(mysqli_sql_exception $exception)
+        {
+            $mysqli->rollback();
+            header("Location: add.php");
+            return;
+        }
     
 ?>
         </div>

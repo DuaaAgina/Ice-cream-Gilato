@@ -8,9 +8,10 @@ if(empty($_SESSION['name']))
 }
 include_once 'tryconnectDB.php';
 ?>
-
+<!---
 <?php
   // create short variable names
+
   $pro1=0;
   $pro2=0;
   $pro3=0;
@@ -94,6 +95,7 @@ include_once 'tryconnectDB.php';
     }
 
 ?>
+-->
 <!DOCTYPE html>
 <!-- NAME: DUAA ADEL AGINA
      ID:217010033
@@ -149,7 +151,36 @@ if ($result->num_rows > 0)
     if($pro1==0 and $pro2==0 and $pro3==0 and $pro4==0 and $pro5==0 and $pro6==0)
   echo "&nbsp;&nbsp;&nbsp;&nbsp;Your cart is empty.";
 }
+if(isset($_POST['quantity']))
+{
+try{
+    $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
+    $mysqli->begin_transaction();   
+    $r="SELECT * FROM item WHERE itemcode='$_POST[dodo]' ";
+    $result = $conn->query($r);
+    $row = $result->fetch_assoc();
+    if($row["itemquantt"]>$pro1)
+    {
+       $sql = "INSERT INTO shoppingcart (usercode,itemcode,itemquant)
+       VALUES ('$_SESSION[code]','$_POST[dodo]','$_POST[quantity]')";
+       if (mysqli_query($conn, $sql)) {
+       echo $pro1."&nbsp;&nbsp;&nbsp;&nbsp;Coffe ice cream";
+       }
+       $mysqli->commit();
+    }else{
+       throw new mysqli_sql_exception();
+    }
+    }catch(mysqli_sql_exception $exception)
+    {
+       echo "hi";
+       $mysqli->rollback();
+       header("Location: prices.php");
+       return;
+    }
+}
             ?>
+            
+            <!---This is wrong code
            <?php
             if($pro1!=0)
             {
@@ -318,11 +349,13 @@ if ($result->num_rows > 0)
                     }
                
             }
-            ?> 
+            ?>
+           -->
+
            </div>  
               
         </div>  
-          
+        
         <footer>
             <div >
                 <p>E: Gilato@gmail.com</p>

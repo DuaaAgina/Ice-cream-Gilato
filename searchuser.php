@@ -86,7 +86,6 @@ Please try again later.<br/></p>';
     
     <?php 
      $_SESSION['vip']=$d['usercode'];
-     echo $_SESSION['vip'];
       ?>
     <tr>
       <td>
