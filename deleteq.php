@@ -49,7 +49,7 @@ if(empty($_SESSION['name']))
                 echo $mysqli->error;
                 exit;
               }
-              $query ="DELETE  from item where Itemcode='$_GET[isbn]'";
+              $query ="UPDATE   item SET deleted ='1'  where Itemcode='$_GET[isbn]'";
     $delete =  $conn->query($query);
     if($delete)
     {

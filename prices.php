@@ -151,8 +151,11 @@ Please try again later.<br/></p>';
         <?php echo $d['itemflavor']; ?>
       </td>
       <td>
-        <?php echo $d['itemprice'];
-        
+        <?php echo $d['itemprice']."LYD";
+        if($_SESSION['vip']=='1')
+        {echo "<br>discount 10%<br>";
+          echo 90/100*$d['itemprice']."LYD";
+        }
         ?>
       </td>
       <td>
@@ -160,7 +163,7 @@ Please try again later.<br/></p>';
        ?>
       </td>
       <td>
-      <input type="text" name="quantity"  size="2" >
+      <input type="text" name="quantity"  size="5" >
       <input type="text" name="dodo"  size="2" value="<?php echo $d['Itemcode'];?>" hidden>
       <input type="submit" value="ADD" id="Signup1" >
       </td>   
