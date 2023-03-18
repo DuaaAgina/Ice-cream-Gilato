@@ -33,7 +33,18 @@ if(empty($_SESSION['name']))
             <span><a href="editpage.php" ><?php echo $_SESSION['fname'];?></a></span>
             <span ><a href="cart1.php"><img src="IMG/logocart.png" id="logo1"></a></span>
         </div>
+        
         <div id="cart">
+        <div class="dropdown">
+        <button>Category</button>
+        <div class="dropdown-content">
+            <a  href="tubes.php">Tubs</a>
+            <a href="cones.php">Cones</a>
+            <a href="bars.php">Bars</a>
+        </div>
+        </div>
+            <div class="line">  </div>
+            <br>
           <!--
         <div class="dropdown">
             <button>Category</button>
@@ -141,7 +152,7 @@ Please try again later.<br/></p>';
 
   while ($d = $result->fetch_array(MYSQLI_ASSOC)) {
     ?>
-    <form method="post" action="AddToChart.php?do=<?php echo $d['Itemcode'];?>">
+    <form method="post" action="cart1.php?do=<?php echo $d['Itemcode'];?>">
     <tr>
       <td>
         <?php echo "$i"; $i++;

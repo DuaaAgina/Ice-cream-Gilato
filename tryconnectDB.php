@@ -4,6 +4,6 @@ if(!$conn)
 {
     echo "connection error: " . mysqli_connect_error();
 } else{
-   // echo "bravo my girl!!";
+   
 }
 ?>

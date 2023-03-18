@@ -8,94 +8,6 @@ if(empty($_SESSION['name']))
 }
 include_once 'tryconnectDB.php';
 ?>
-<!---
-<?php
-  // create short variable names
-
-  $pro1=0;
-  $pro2=0;
-  $pro3=0;
-  $pro4=0;
-  $pro5=0;
-  $pro6=0;
-  if(!empty($_POST['pro1']))
-  {  $pro1 = $_POST['pro1'];
-    try{
-        if(!is_numeric($_POST['pro1']))
-        throw new Exception();
-    }catch(Exception $e)
-    { 
-        echo "WRONG ENTER";
-        header("Location: prices.php");
-        return;
-    }
-}
-    if(!empty($_POST['pro2']))
-    {  $pro2 = $_POST['pro2'];
-        try{
-            if(!is_numeric($_POST['pro2']))
-            throw new Exception();
-        }catch(Exception $e)
-        { 
-            echo "WRONG ENTER";
-            header("Location: prices.php");
-            return;
-        }
-    }
-
-    if(!empty($_POST['pro3']))
-    {  $pro3 = $_POST['pro3'];
-        try{
-            if(!is_numeric($_POST['pro3']))
-            throw new Exception();
-        }catch(Exception $e)
-        { 
-            echo "WRONG ENTER";
-            header("Location: prices.php");
-            return;
-        }
-    }
-    if(!empty($_POST['pro4']))
-    {  $pro4 = $_POST['pro4'];
-        try{
-            if(!is_numeric($_POST['pro4']))
-            throw new Exception();
-        }catch(Exception $e)
-        { 
-            echo "WRONG ENTER";
-            header("Location: prices.php");
-            return;
-        }
-    }
- 
-    if(!empty($_POST['pro5']))
-    {  $pro5 = $_POST['pro5'];
-        try{
-            if(!is_numeric($_POST['pro5']))
-            throw new Exception();
-        }catch(Exception $e)
-        { 
-            echo "WRONG ENTER";
-            header("Location: prices.php");
-            return;
-        }
-    }
-
-    if(!empty($_POST['pro6']))
-    {  $pro6 = $_POST['pro6'];
-        try{
-            if(!is_numeric($_POST['pro6']))
-            throw new Exception();
-        }catch(Exception $e)
-        { 
-            echo "WRONG ENTER";
-            header("Location: prices.php");
-            return;
-        }
-    }
-
-?>
--->
 <!DOCTYPE html>
 <!-- NAME: DUAA ADEL AGINA
      ID:217010033
@@ -127,10 +39,38 @@ include_once 'tryconnectDB.php';
             <div>
                 <p class="Heading">My shopping cart</p>
             </div>
-            <div class="line">  </div>
+            
             
            <div>
-           <?php
+            
+          <?php
+          if(isset($_POST['quantity']))
+          {
+          try{
+              $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
+              $mysqli->begin_transaction();   
+              $r="SELECT * FROM item WHERE itemcode='$_POST[dodo]' ";
+              $result = $conn->query($r);
+              $row = $result->fetch_assoc();
+              if($row["itemquantt"]>0)
+              {
+                 $sql = "INSERT INTO shoppingcart (usercode,itemcode,itemquant)
+                 VALUES ('$_SESSION[code]','$_POST[dodo]','$_POST[quantity]')";
+                 if (mysqli_query($conn, $sql)) {
+                 echo "<br>Added Sucessufely to your cart";
+                 }
+                 $mysqli->commit();
+              }else{
+                 throw new mysqli_sql_exception();
+              }
+              }catch(mysqli_sql_exception $exception)
+              {
+              
+                 $mysqli->rollback();
+                 header("Location: prices.php");
+                 return;
+              }
+          }
             $sql = "SELECT *
             FROM shoppingcart
              JOIN item ON item.itemcode=shoppingcart.itemcode AND shoppingcart.usercode=$_SESSION[code]; ";
@@ -140,220 +80,49 @@ if ($result->num_rows > 0)
  {
  // output data of each row
  $i=1;
+ 
   while($row = $result->fetch_assoc()) {
+    ?><form method="post" action="deletep.php"><?php
     echo "&nbsp;&nbsp;&nbsp;&nbsp;Item :".$i."<br>";
    // echo " Name:" .$row["itemname"]. "<br>";
     echo "&nbsp;&nbsp;&nbsp;&nbsp; Flavor:" . $row["itemflavor"]. "<br>";
     echo "&nbsp;&nbsp;&nbsp;&nbsp; Quantity:" . $row["itemquant"]."<br>";
+    ?>
+    <input type="text" name="is"  size="2" value="<?php echo $row['Itemcode'];?>" hidden>
+    
+    <input type="submit" value="Delete" id="Signup1" >
+    <?php
     echo "<br>"; 
-    $i++; }
+    $i++; 
+    ?>
+    
+</form>
+
+<?php
+}
+
 } else {
-    if($pro1==0 and $pro2==0 and $pro3==0 and $pro4==0 and $pro5==0 and $pro6==0)
-  echo "&nbsp;&nbsp;&nbsp;&nbsp;Your cart is empty.";
+    if(!isset($_POST['quantity']))
+  echo "&nbsp;&nbsp;&nbsp;&nbsp;Your cart is emptyooo.";
 }
-if(isset($_POST['quantity']))
-{
-try{
-    $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
-    $mysqli->begin_transaction();   
-    $r="SELECT * FROM item WHERE itemcode='$_POST[dodo]' ";
-    $result = $conn->query($r);
-    $row = $result->fetch_assoc();
-    if($row["itemquantt"]>$pro1)
-    {
-       $sql = "INSERT INTO shoppingcart (usercode,itemcode,itemquant)
-       VALUES ('$_SESSION[code]','$_POST[dodo]','$_POST[quantity]')";
-       if (mysqli_query($conn, $sql)) {
-       echo $pro1."&nbsp;&nbsp;&nbsp;&nbsp;Coffe ice cream";
-       }
-       $mysqli->commit();
-    }else{
-       throw new mysqli_sql_exception();
-    }
-    }catch(mysqli_sql_exception $exception)
-    {
-       echo "hi";
-       $mysqli->rollback();
-       header("Location: prices.php");
-       return;
-    }
-}
+
             ?>
             
-            <!---This is wrong code
-           <?php
-            if($pro1!=0)
-            {
-               try{
-                 $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
-                 $mysqli->begin_transaction();   
-                 $r="SELECT * FROM item WHERE itemcode='1' ";
-                 $result = $conn->query($r);
-                 $row = $result->fetch_assoc();
-                 if($row["itemquantt"]>$pro1)
-                 {
-                    $sql = "INSERT INTO shoppingcart (usercode,itemcode,itemquant)
-                    VALUES ('$_SESSION[code]','1','$pro1')";
-                    if (mysqli_query($conn, $sql)) {
-                    echo $pro1."&nbsp;&nbsp;&nbsp;&nbsp;Coffe ice cream";
-                    }
-                    $mysqli->commit();
-                 }else{
-                    throw new mysqli_sql_exception();
-                 }
-                 }catch(mysqli_sql_exception $exception)
-                 {
-                    echo "hi";
-                    $mysqli->rollback();
-                    header("Location: prices.php");
-                    return;
-                 }
-           }
-            if($pro2!=0)
-            {
-                try{
-                    $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
-                    $mysqli->begin_transaction();   
-                    $r="SELECT * FROM item WHERE itemcode='1' ";
-                    $result = $conn->query($r);
-                    $row = $result->fetch_assoc();
-                    if($row["itemquantt"]>$pro1)
-                    {
-                        $sql = "INSERT INTO shoppingcart (usercode,itemcode,itemquant)
-                        VALUES ('$_SESSION[code]','1','$pro2')";
-                        if (mysqli_query($conn, $sql)) {
-                          echo $pro1."&nbsp;&nbsp;&nbsp;&nbsp;Coffe ice cream";
-                          } 
-                       $mysqli->commit();
-                    }else{
-                       throw new mysqli_sql_exception();
-                    }
-                    }catch(mysqli_sql_exception $exception)
-                    {
-                       echo "hi";
-                       $mysqli->rollback();
-                       header("Location: prices.php");
-                       return;
-                    }
-                
-            }
-            if($pro3!=0)
-            {
-                try{
-                    $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
-                    $mysqli->begin_transaction();   
-                    $r="SELECT * FROM item WHERE itemcode='1' ";
-                    $result = $conn->query($r);
-                    $row = $result->fetch_assoc();
-                    if($row["itemquantt"]>$pro1)
-                    {
-                        $sql = "INSERT INTO shoppingcart (usercode,itemcode,itemquant)
-                        VALUES ('$_SESSION[code]','1','$pro3')";
-                        if (mysqli_query($conn, $sql)) {
-                          echo $pro1."&nbsp;&nbsp;&nbsp;&nbsp;Coffe ice cream";
-                          }
-                       $mysqli->commit();
-                    }else{
-                       throw new mysqli_sql_exception();
-                    }
-                    }catch(mysqli_sql_exception $exception)
-                    {
-                       echo "hi";
-                       $mysqli->rollback();
-                       header("Location: prices.php");
-                       return;
-                    }
-               
-            }
-            if($pro4!=0)
-            {
-                try{
-                    $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
-                    $mysqli->begin_transaction();   
-                    $r="SELECT * FROM item WHERE itemcode='1' ";
-                    $result = $conn->query($r);
-                    $row = $result->fetch_assoc();
-                    if($row["itemquantt"]>$pro1)
-                    {
-                        $sql = "INSERT INTO shoppingcart (usercode,itemcode,itemquant)
-                        VALUES ('$_SESSION[code]','1','$pro4')";
-                        if (mysqli_query($conn, $sql)) {
-                          echo $pro1."&nbsp;&nbsp;&nbsp;&nbsp;Coffe ice cream";
-                          }
-                       $mysqli->commit();
-                    }else{
-                       throw new mysqli_sql_exception();
-                    }
-                    }catch(mysqli_sql_exception $exception)
-                    {
-                       echo "hi";
-                       $mysqli->rollback();
-                       header("Location: prices.php");
-                       return;
-                    }
-               
-            }
-            if($pro5!=0)
-            {
-                try{
-                    $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
-                    $mysqli->begin_transaction();   
-                    $r="SELECT * FROM item WHERE itemcode='1' ";
-                    $result = $conn->query($r);
-                    $row = $result->fetch_assoc();
-                    if($row["itemquantt"]>$pro1)
-                    {
-                        $sql = "INSERT INTO shoppingcart (usercode,itemcode,itemquant)
-                        VALUES ('$_SESSION[code]','1','$pro5')";
-                        if (mysqli_query($conn, $sql)) {
-                          echo $pro1."&nbsp;&nbsp;&nbsp;&nbsp;Coffe ice cream";
-                          }
-                       $mysqli->commit();
-                    }else{
-                       throw new mysqli_sql_exception();
-                    }
-                    }catch(mysqli_sql_exception $exception)
-                    {
-                       echo "hi";
-                       $mysqli->rollback();
-                       header("Location: prices.php");
-                       return;
-                    }
-                
-            }
-            if($pro6!=0)
-            {
-                try{
-                    $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
-                    $mysqli->begin_transaction();   
-                    $r="SELECT * FROM item WHERE itemcode='1' ";
-                    $result = $conn->query($r);
-                    $row = $result->fetch_assoc();
-                    if($row["itemquantt"]>$pro1)
-                    {
-                        $sql = "INSERT INTO shoppingcart (usercode,itemcode,itemquant)
-          VALUES ('$_SESSION[code]','1','$pro6')";
-          if (mysqli_query($conn, $sql)) {
-            echo $pro1."&nbsp;&nbsp;&nbsp;&nbsp;Coffe ice cream";
-            }
-                       $mysqli->commit();
-                    }else{
-                       throw new mysqli_sql_exception();
-                    }
-                    }catch(mysqli_sql_exception $exception)
-                    {
-                       echo "hi";
-                       $mysqli->rollback();
-                       header("Location: prices.php");
-                       return;
-                    }
-               
-            }
-            ?>
-           -->
-
-           </div>  
-              
+            
+           </div> 
+           <br>
+           <div class="line">  </div> 
+           <br>
+           <!--<div >
+                <p class="Heading" ><a   href="order.php">Confirm Order</a></p>
+                </div>
+-->
+<form method="post" action="order.php">
+<p>CHOOSE THE PAYMENT METHOD:</p>
+                        CASH<input type="radio" name="time" value="1" ><br>
+                        VESA CARD<input type="radio" name="time" value="2" >
+                        <input type="submit" value="CONFIRM INFORMATION" class="cont">
+</form>
         </div>  
         
         <footer>
