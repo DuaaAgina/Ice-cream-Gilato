@@ -3,7 +3,6 @@
 session_start();
 if(empty($_SESSION['name']))
 {
-   // echo "hi again";
     header("Location: login.html");
 }
 include_once 'tryconnectDB.php';
@@ -55,8 +54,6 @@ include_once 'tryconnectDB.php';
                 flavor:<?php echo"&nbsp&nbsp"; ?> <input type="text" name="flav" size="size" maxlength="length"  placeholder=" Enter item flavor" class="boxstyle" required='required'><br><br>
                 Price:<?php echo"&nbsp&nbsp&nbsp&nbsp"; ?><input type="text" name="price" size="size" maxlength="length"  placeholder=" Enter the price" class="boxstyle" required='required'><br><br>
                 Quantity<input type="text" name="quant" size="size" maxlength="length"  placeholder="Enter quatity" class="boxstyle" required='required'><br><br>
-                
-                <!--<input type="text" name="category" size="size" maxlength="length"  placeholder=" Enter category" class="boxstyle" required='required'><br><br>-->
                 <br><input type="submit" value="Add Item" id="Signup1">
                 <br>
                 

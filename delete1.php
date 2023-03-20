@@ -3,7 +3,7 @@
 session_start();
 if(empty($_SESSION['name']))
 {
-   // echo "hi again";
+  
     header("Location: login.html");
 }
 ?>
@@ -99,8 +99,6 @@ $mysqli = new mysqli('localhost', 'duaa', '13579', 'gilato');
          $_SESSION['flavor']=$data['itemflavor'];
          $_SESSION['quant']=$data['itemquantt'];
           ?>
-            
-          <!--<input type="checkbox" name="dodo" value="<?php $y ?>" ></p><br>-->
           <td><a href="deleteq.php?isbn=<?php echo $data['Itemcode'];?>">Delete</a></td>
           </td>
           <td><a href="update.php?isbn=<?php echo $data['Itemcode'];?>">Update</a></td>

@@ -3,7 +3,7 @@
 session_start();
 if(empty($_SESSION['name']))
 {
-   // echo "hi again";
+ 
     header("Location: login.html");
 }
 ?>
@@ -52,7 +52,7 @@ if(empty($_SESSION['name']))
     <td>User phone</td>
     <td>User gmail </td>
     <td>User address </td>
-    <td>Delete user </td>
+    
     <td>Set VIP </td>
   </tr>
 
@@ -110,7 +110,7 @@ Please try again later.<br/></p>';
        ?>
       </td>
     
-      <td><a href="deleteq.php?isbn=<?php echo $d['usercode'];?>">Delete</a></td>
+     
       <td>
       <a href="setvip.php?isbn=<?php echo $d['usercode']; ?>">set</a>
         <!--<input type="checkbox" value='" name="setvip">-->

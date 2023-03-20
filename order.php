@@ -3,38 +3,11 @@
 session_start();
 if(empty($_SESSION['name']))
 {
-   // echo "hi again";
     header("Location: login.html");
 }
 echo $_SESSION['name'];
 include_once 'tryconnectDB.php';
 ?>
-<!---<?php
-  // create short variable names
-  $pro1=0;
-  $pro2=0;
-  $pro3=0;
-  $pro4=0;
-  $pro5=0;
-  $pro6=0;
-  if(!empty($_POST['pro1']))
-    $pro1 = $_POST['pro1'];
- 
-    if(!empty($_POST['pro2']))
-    $pro2 = $_POST['pro2'];
-
-    if(!empty($_POST['pro3']))
-    $pro3 = $_POST['pro3'];
-    if(!empty($_POST['pro4']))
-    $pro4 = $_POST['pro4'];
- 
-    if(!empty($_POST['pro5']))
-    $pro5 = $_POST['pro5'];
-
-    if(!empty($_POST['pro6']))
-    $pro6 = $_POST['pro6'];
-
-?>-->
 <!DOCTYPE html>
 <!-- NAME: DUAA ADEL AGINA
      ID:217010033
@@ -50,6 +23,7 @@ include_once 'tryconnectDB.php';
         <div class="nav_bar">
             <span id="logo"><a href="ourstory.html" id="logoc">Gilato</a></span>
             <span><a href="homepage.php" >home</a></span>
+            <span><a href="control.php" ><?php if($_SESSION['check']==1){echo "Control";} ?></a></span>
             <span><a href="prices.php" >Prices</a></span>
             <span><a href="contact.html" >Contact us</a></span>
             <span><a href="aboutus.html" >About us</a></span>
@@ -60,22 +34,6 @@ include_once 'tryconnectDB.php';
             
         </div>
         <div id="cart1">
-           <!-- <div>
-                <p class="Heading">Thanks <?php
-             echo $_SESSION['name'];
-            ?></p>
-            </div>
-            <div class="line">  </div>
-            <div>
-                <form class="formcar2">
-  
-                   <h3 class="order">Your order will arrive soon <?php
-             echo $_SESSION['name'];
-            ?> call us if there is any trouble</h3>
-                </form>
-            </div> 
-             
-            </div>  -->
             <?php
             $sql = "SELECT *
             FROM shoppingcart
@@ -96,8 +54,7 @@ include_once 'tryconnectDB.php';
     $sql1 = "UPDATE item SET itemquantt=' $newprice' WHERE itemcode='$row[itemcode]'; ";
             $res = $conn->query($sql1);
     $newprices+=$row["itemquant"]*$row["itemprice"];
-    $sql1 = "INSERT INTO orders (usercode,paycode,totalprice,itemcode)
-    VALUES ('$_SESSION[code]',$_POST[time],' $newprice','$row[itemcode]')";
+   
     $res = $conn->query($sql1);
     $sql1 = "DELETE FROM shoppingcart  WHERE itemcode='$row[itemcode]' and usercode='$_SESSION[code]'; ";
      $res = $conn->query($sql1);
@@ -108,8 +65,18 @@ include_once 'tryconnectDB.php';
     echo "<br>"; 
     $i++; 
   }
-  echo "total oredr price is : ".$newprices."LYD";
-  echo "<br>Your order will arrive soon ".$_SESSION['name']."Thanks you";
+  $s=$newprices;
+  if($_SESSION['vip']=='1')
+  {
+    echo "Total price before discount is :". $newprices."LYD";
+    echo "<br>You have a discount 10% !<br>";
+      $s=90/100*$newprices;
+    echo 90/100*$newprices."LYD";
+  }
+  $sql1 = "INSERT INTO orders (usercode,paycode,totalprices)
+  VALUES ('$_SESSION[code]',$_POST[time],' $newprices')";
+  echo "total oreder price is : ".$s."LYD";
+  echo "<br>Your order will arrive soon ".$_SESSION['fname']."Thanks you";
 }else{
     echo "Nothing to order";
 }

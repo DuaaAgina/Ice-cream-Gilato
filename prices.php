@@ -4,7 +4,6 @@
 session_start();
 if(empty($_SESSION['name']))
 {
-   // echo "hi again";
     header("Location: login.html");
 }
 ?>
@@ -24,6 +23,7 @@ if(empty($_SESSION['name']))
         <div class="nav_bar">
             <span id="logo"><a href="ourstory.html" id="logoc">Gilato</a></span>
             <span><a href="homepage.php" >home</a></span>
+            <span><a href="control.php" ><?php if($_SESSION['check']==1){echo "Control";} ?></a></span>
             <span><a href="prices.php" id="contact">Prices</a></span>
             <span><a href="contact.html" >Contact us</a></span>
             <span><a href="aboutus.html" >About us</a></span>
@@ -45,78 +45,6 @@ if(empty($_SESSION['name']))
         </div>
             <div class="line">  </div>
             <br>
-          <!--
-        <div class="dropdown">
-            <button>Category</button>
-            <div class="dropdown-content">
-            <a href="tubes.php">Tubs</a>
-            <a href="cones.php">Cones</a>
-            <a href="bars.php">Bars</a>
-            </div>
-        </div>
-        <div>
-                <p class="Heading">Welcome <?php
-           
-            ?></p>
-      
-        <form action="cart1.php" method="post" >
-            
-        <div class="line">  </div>
-        <div >
-            <table style="width:100%" class="table1">
-                <tr>
-                  <th> </th>
-                  <th>flavour</th> 
-                  <th>Price</th>
-                  <th>Quantity</th>
-                </tr>
-                <tr>    
-                    <td><img src="IMG/pro1.png" class="picart1"></td>
-                    <td>Coffe</td>
-                   <td>2LYD</td>
-                   <td><input type="text" name="pro1" size="3" maxlength="3" />
-                   </td>
-                  </tr>
-                  <tr>    
-                      <td><img src="IMG/pro2.png" class="picart1"></td>
-                      <td>Vanilla</td>
-                     <td>4LYD</td>
-                     <td><input type="text" name="pro2" size="3" maxlength="3" />
-                     </td>
-                    </tr>
-                    <tr>    
-                        <td><img src="IMG/cones3.png" class="picart1"></td>
-                        <td>Cherry </td>
-                       <td>6LYDL</td>
-                       <td><input type="text" name="pro3" size="3" maxlength="3" />
-                       </td>
-                      </tr>
-                      <tr>    
-                        <td><img src="IMG/cones4.png" class="picart1"></td>
-                        <td>Strawberry</td>
-                       <td>3LYD</td>
-                       <td><input type="text" name="pro4" size="3" maxlength="3" />
-                       </td>
-                      </tr>
-                      <tr>    
-                        <td><img src="IMG/bar2.png" class="picart1"></td>
-                        <td>Chocolate</td>
-                       <td>5LYD</td>
-                       <td><input type="text" name="pro5" size="3" maxlength="3" />
-                       </td>
-                      </tr>
-                      <tr>    
-                        <td><img src="IMG/bar4.png" class="picart1"></td>
-                        <td>Banana</td>
-                       <td>7LYD</td>
-                       <td><input type="text" name="pro6" size="3" maxlength="3" />
-                       </td>
-                      </tr>
-             </table>
-             <a href="cart2.html"><input type="submit" value="Show my cart" class="cont"></a>
-        </div>
-    </form>
--->
     <form action="cart1.php" method="post" enctype="multipart/form-data">
 <table border="1"   >
   <tr>
@@ -163,10 +91,6 @@ Please try again later.<br/></p>';
       </td>
       <td>
         <?php echo $d['itemprice']."LYD";
-        if($_SESSION['vip']=='1')
-        {echo "<br>discount 10%<br>";
-          echo 90/100*$d['itemprice']."LYD";
-        }
         ?>
       </td>
       <td>

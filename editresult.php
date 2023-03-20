@@ -31,7 +31,7 @@ session_start();
             <span><a href="login.html" >Login</a></span>
             <span><a href="logout.php" >Logout</a></span>
             <span ><a href="editpage.php" id="contact"><?php echo $_SESSION['fname'];?></a></span>
-            <span ><a href="cart.php"><img src="IMG/logocart.png" id="logo1"></a></span>
+            <span ><a href="cart1.php"><img src="IMG/logocart.png" id="logo1"></a></span>
         </div>
 
 

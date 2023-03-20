@@ -4,6 +4,8 @@ session_start();
 include 'tryconnectDB.php';
       $name = htmlspecialchars($_POST['name']);
       $pass = htmlspecialchars($_POST['pass']);
+      $pass = stripcslashes($_POST['pass']);
+      $pass=$conn->real_escape_string($_POST['pass']);
       if(!isset($name))
       {
         header("Location: wrong-loging.php"); 

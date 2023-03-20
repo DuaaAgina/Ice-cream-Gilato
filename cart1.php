@@ -3,7 +3,6 @@
 session_start();
 if(empty($_SESSION['name']))
 {
-   // echo "hi again";
     header("Location: login.html");
 }
 include_once 'tryconnectDB.php';
@@ -84,7 +83,6 @@ if ($result->num_rows > 0)
   while($row = $result->fetch_assoc()) {
     ?><form method="post" action="deletep.php"><?php
     echo "&nbsp;&nbsp;&nbsp;&nbsp;Item :".$i."<br>";
-   // echo " Name:" .$row["itemname"]. "<br>";
     echo "&nbsp;&nbsp;&nbsp;&nbsp; Flavor:" . $row["itemflavor"]. "<br>";
     echo "&nbsp;&nbsp;&nbsp;&nbsp; Quantity:" . $row["itemquant"]."<br>";
     ?>
@@ -105,18 +103,11 @@ if ($result->num_rows > 0)
     if(!isset($_POST['quantity']))
   echo "&nbsp;&nbsp;&nbsp;&nbsp;Your cart is emptyooo.";
 }
-
-            ?>
-            
-            
+            ?>  
            </div> 
            <br>
            <div class="line">  </div> 
-           <br>
-           <!--<div >
-                <p class="Heading" ><a   href="order.php">Confirm Order</a></p>
-                </div>
--->
+           <br>                                               
 <form method="post" action="order.php">
 <p>CHOOSE THE PAYMENT METHOD:</p>
                         CASH<input type="radio" name="time" value="1" ><br>

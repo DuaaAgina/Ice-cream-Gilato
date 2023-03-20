@@ -4,7 +4,6 @@ include 'tryconnectDB.php.';
 session_start();
 if(empty($_SESSION['name']))
 {
-   // echo "hi again";
     header("Location: login.html");
 }
 ?>
